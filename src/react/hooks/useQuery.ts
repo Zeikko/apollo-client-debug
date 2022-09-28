@@ -121,6 +121,7 @@ class InternalState<TData, TVariables> {
   // rules of React hooks: only at the top level of the calling function, and
   // without any dynamic conditional logic.
   useQuery(options: QueryHookOptions<TData, TVariables>) {
+    console.log('useQuery')
     // The renderPromises field gets initialized here in the useQuery method, at
     // the beginning of everything (for a given component rendering, at least),
     // so we can safely use this.renderPromises in other/later InternalState
@@ -146,6 +147,8 @@ class InternalState<TData, TVariables> {
           // the values differ slightly. Specifically, loading results will have
           // an empty object for data instead of `undefined` for some reason.
           const result = obsQuery.getCurrentResult();
+          console.log('result', result)
+          console.log('result.data', result.data)
           // Make sure we're not attempting to re-render similar results
           if (
             previousResult &&
@@ -160,6 +163,7 @@ class InternalState<TData, TVariables> {
         };
 
         const onError = (error: Error) => {
+          console.log('onError', error)
           const last = obsQuery["last"];
           subscription.unsubscribe();
           // Unfortunately, if `lastError` is set in the current
