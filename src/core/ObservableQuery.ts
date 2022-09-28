@@ -222,6 +222,7 @@ export class ObservableQuery<
   }
 
   public getCurrentResult(saveAsLastResult = true): ApolloQueryResult<TData> {
+    console.log('getCurrentResult')
     // Use the last result as long as the variables match this.variables.
     const lastResult = this.getLastResult(true);
 
@@ -252,6 +253,9 @@ export class ObservableQuery<
       // Fall through.
     } else {
       const diff = this.queryInfo.getDiff();
+      if (!diff.complete) {
+        console.log("diff not complete", diff);
+      }
 
       if (diff.complete || this.options.returnPartialData) {
         result.data = diff.result;

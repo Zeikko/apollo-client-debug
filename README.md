@@ -1,3 +1,19 @@
+# How to debug
+
+This fork can be used to log mismatching test responses
+
+In apollo-client directory
+```
+yarn install
+yarn build
+```
+
+In project directory
+```
+yarn add @apollo/client ../apollo-client/dist/
+```
+
+
 # <a href="https://www.apollographql.com/"><img src="https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png" height="100" alt="Apollo Client"></a>
 
 ## Apollo Client
